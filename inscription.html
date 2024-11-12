@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inscription</title>
+    <link rel="icon" href="download.jpg" type="image/x-icon">
+    <script>function lettre(ch) {
+        test=true
+        i=0
+        while(i<ch.length && test){
+            c=ch.charAt(i).toUpperCase()
+            if( c<"A" || c>"Z"){
+                test=false
+            }
+            i++
+        }
+        return test
+        
+    }
+    function chiffre(ch){
+        ok=true
+        i=0;
+        while(i<ch.length && ok){
+        c=ch.charAt(i)
+        if(c<"0" || c>"9"){ok=false}
+        else{i++;}
+        }
+        return ok
+        }
+    function alphanum(){
+        test=true
+        i=0
+        while(i<ch.length && test){
+            c=ch.charAt(i).toUpperCase()
+            if(c<="A" || c>="Z" && c<="0" || c>="9"){
+                test=false
+            }
+            i++
+        }
+        return test
+    }
+    
+    function verif() {
+        nom=document.getElementById("nom").value;
+        if((nom.length < 3 || nom.length > 20) || !lettre(nom) ){
+            alert("verifier votre nom !!!! ");return false;
+        }
+        prenom=document.getElementById("prenom").value;
+        if((prenom.length < 3 || prenom.length > 20)|| !lettre(prenom) ){
+            alert("verifier votre prénom !!!!!  ");return false;
+        }
+        tel=document.getElementById("tel").value;
+        if (tel.length!=8 ||!(chiffre(tel))||tel.charAt(0)==1) {
+            alert("verife votre Téléphonne Number!!!");return false
+        }
+        mail=document.getElementById("email").value;
+        p=mail.indexOf("@")
+        p1=mail.indexOf(".",p)
+        if (p==-1 || p1==-1) {
+            alert("mail invalide")
+            return false
+        }
+        ch1=mail.substr(0,p)
+        ch2=mail.substr(p+1)
+        p1=ch2.indexOf(".")
+        ch3=ch2.substr(0,p1)
+        ch4=ch2.substr(p1+1)
+        if (ch1==""||ch4==""||ch3==""||!lettre(ch1)||!lettre(ch4)||!lettre(ch3)||!(ch4.length<=4&&ch4.length>=2)) {
+            alert("mail invalide")
+            return false
+        }
+    
+    
+    
+        mot=document.getElementById("mot").value;
+        if (mot.length!=8 || !alphanum(mot)) {
+            alert("verife votre Mot de passe !!!!!")
+            
+        }
+    }</script>
+    <style>legend{
+        text-align: center;
+        color: rgb(187, 127, 186);
+    }
+    fieldset{
+        text-align: center;
+    }
+    table{  
+        margin: 200px;
+        margin-top: 50px;
+        margin-left: 450px;
+        margin-right: 150px;
+       /* padding-left: 50px;
+        padding: 50px;*/
+        text-align:center;
+      }
+      
+      td {
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      tr:hover {background-color: rgb(69, 99, 82);}
+    label,input{
+        color: rgb(152, 115, 152);
+    }
+    body{
+        background-image: url("ins.avif");
+        background-repeat: no-repeat;
+        background-size:cover;
+    }
+    
+    #forget-btn {
+        padding: 15px;
+        color: white;
+        height: 40px;
+        background: transparent;
+        width: 7cm;
+        border: 9cm;
+        color: #de93cf;
+        font-size: 16px;
+        padding-top: 9px;
+        border-radius: 14px;
+        font-style: normal;
+        font-weight: bold;
+       }
+       #login-btn {
+        padding: 15px;
+        color: rgb(237, 162, 228);
+        height: 40px;
+        background: transparent;
+        width: 7cm;
+        border: 9cm;
+        color: #de93cf;
+        font-size: 16px;
+        padding-top: 9px;
+        border-radius: 14px;
+        font-style: normal;
+        font-weight: bold;
+       }
+    
+       </style>
+</head>
+<body>
+    <fieldset>
+        <legend>Remplier cette formulaire</legend>
+        <form action="p1.html" onsubmit="return verif()">
+            <table><tr><td><label for="nom">Nom : </label>
+            </td><td><input type="text" placeholder="Enter votre nom " id="nom" ></td></tr>
+            <tr><td><label for="prenom">Prénom : </label>
+            </td><td><input type="text" placeholder="Enter votre prenom " id="prenom" ></td></tr>
+            <tr><td><label for="genre">Genre : </label>
+            </td><td><label for="">Hommme : </label><input type="radio" name="g" id="h" ><label for="">Femme : </label><input id="f" name="g" type="radio" ></td></tr>
+            <tr><td><label for="tel">Téléphonne Number : </label>
+            </td><td><input type="text" id="tel" placeholder="Entre votre Numero de telephonne " ></td></tr>
+            <tr><td><label for="email"> Email : </label>
+            </td><td><input type="text" id="email" placeholder="Entre votre Email " ></td></tr>
+            <tr><td><label for="motdepasse">Mot de passe  : </label>
+            </td><td><input type="password" id="mot" placeholder="Entre votre Password "  ></td></tr>
+            <tr><td><input type="submit"value="enregistre" id="login-btn"></td>
+            </td><td><input type="reset" value="Annuler" id="forget-btn" ></td></tr>
+        </table>
+        </form>
+    </fieldset>
+</body>
+</html>
