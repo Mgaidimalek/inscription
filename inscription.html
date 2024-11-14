@@ -56,20 +56,8 @@
             alert("verife votre Téléphonne Number!!!");return false
         }
         mail=document.getElementById("email").value;
-        p=mail.indexOf("@")
-        p1=mail.indexOf(".",p)
-        if (p==-1 || p1==-1) {
-            alert("mail invalide")
-            return false
-        }
-        ch1=mail.substr(0,p)
-        ch2=mail.substr(p+1)
-        p1=ch2.indexOf(".")
-        ch3=ch2.substr(0,p1)
-        ch4=ch2.substr(p1+1)
-        if (ch1==""||ch4==""||ch3==""||!lettre(ch1)||!lettre(ch4)||!lettre(ch3)||!(ch4.length<=4&&ch4.length>=2)) {
-            alert("mail invalide")
-            return false
+        if(mail.length==0){
+            alert(" verife votre Email !!!!)
         }
     
     
